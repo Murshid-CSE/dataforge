@@ -97,15 +97,16 @@ The following tables record numerical values produced by the test suite [`__test
 ---
 
 ### Acceptance Test 5: Deterministic Reproducibility
-- **Objective**: Verify that identical seed and configuration parameters reproduce identical floating-point values bit-for-bit.
+- **Objective**: Verify that identical seed and configuration parameters reproduce identical floating-point values in the tested runtime environment.
 - **Parameters**: `seed = 12345`, $d = 16$, $N = 8$, $\rho = 0.40$, Rule: `Hebbian`.
 
 ```text
 Run 1 MSE: 0.09861888707202518
 Run 2 MSE: 0.09861888707202518
 Matrix Element Delta (|M_1 - M_2|): 0.0000000000000000
-Bit-for-Bit Determinism: VERIFIED (True)
+Runtime Reproducibility: VERIFIED (True)
 ```
+*Note*: Experiments are deterministic for a fixed seed and configuration in the tested JavaScript runtime; reproducibility is verified by automated regression tests.
 
 ---
 

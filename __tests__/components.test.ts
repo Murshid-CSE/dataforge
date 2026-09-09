@@ -212,8 +212,11 @@ describe('Component rendering tests', () => {
       expect(html).toContain('Retentive Network');
       expect(html).toContain('Gated Linear Attention');
       expect(html).toContain('Delta Rule');
+      expect(html).toContain('Gated Delta Networks');
       expect(html).toContain('https://arxiv.org/abs/2509.26507');
       expect(html).toContain('https://arxiv.org/abs/2608.09888');
+      expect(html).toContain('https://arxiv.org/abs/2406.06484');
+      expect(html).toContain('https://arxiv.org/abs/2412.06464');
     });
 
     it('renders limitations and honest labels', () => {

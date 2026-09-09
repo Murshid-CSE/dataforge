@@ -59,8 +59,18 @@ const PRIMARY_SOURCES: PrimarySource[] = [
     year: 2024,
     arxivId: 'arXiv:2406.06484',
     url: 'https://arxiv.org/abs/2406.06484',
-    usedFor: 'Delta rule memory update to improve associative recall beyond simple addition',
-    keyFinding: 'Motivates error-driven memory erasure to mitigate cross-talk and degradation during sequential associative retrieval.',
+    usedFor: 'Delta-rule associative-memory update and hardware-efficient training of DeltaNet',
+    keyFinding: 'Replaces naive additive memory updates with an error-correcting delta rule to directly target recall error and mitigate interference.',
+  },
+  {
+    id: 6,
+    title: 'Gated Delta Networks: Improving Mamba2 with Delta Rule',
+    authors: 'Yang, Kautz, Hatamizadeh',
+    year: 2024,
+    arxivId: 'arXiv:2412.06464',
+    url: 'https://arxiv.org/abs/2412.06464',
+    usedFor: 'Gated delta memory updates, adaptive memory control, and improved associative retrieval',
+    keyFinding: 'Unifies data-dependent gating with delta updates to dynamically regulate retention and selective forgetting in recurrent states.',
   },
 ];
 
@@ -133,7 +143,7 @@ export function Sources() {
           </span>
         </div>
         <p>
-          Each reference addresses a distinct research role: RetNet (recurrent constant-size sequence modeling), GLA (matrix-valued recurrent attention and gating), DeltaNet (targeted memory updates / associative recall), BDH (synaptic plasticity and inference-time working memory), and BDH-CQ (recurrent inference-time memory and latent reasoning). These papers provide independent architectural context; they are not presented as proofs of this toy model&apos;s specific synthetic behavior.
+          Each reference addresses a distinct research role: RetNet (recurrent constant-size sequence modeling), GLA (matrix-valued recurrent attention and gating), DeltaNet (delta-rule associative updates and hardware-efficient training), Gated DeltaNet (gated delta updates and adaptive memory control), BDH (synaptic plasticity and inference-time working memory), and BDH-CQ (recurrent inference-time memory and latent reasoning). These papers provide independent architectural context; they are not presented as proofs of this toy model&apos;s specific synthetic behavior.
         </p>
       </div>
     </section>

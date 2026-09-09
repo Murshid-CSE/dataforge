@@ -7,7 +7,7 @@
 
 ## 1. Architectural Roles of Primary Literature
 
-The five primary research papers cited in this project do not serve as five identical or interchangeable &ldquo;proofs&rdquo; of our central claim. Rather, they fulfill four distinct scientific roles:
+The six primary research papers cited in this project do not serve as interchangeable &ldquo;proofs&rdquo; of our central claim. Rather, they fulfill distinct scientific roles:
 
 ```text
                OUR EDUCATIONAL TOY
@@ -19,10 +19,11 @@ The five primary research papers cited in this project do not serve as five iden
        ┌────────────────┼────────────────┐
        ↓                                 ↓
 [BROADER ARCHITECTURAL CONTEXT]    [PATHWAY ARCHITECTURAL ANCHOR]
-  RetNet / GLA / Gated DeltaNet                  BDH
-       ↓                                         ↓
-Show bounded/recurrent associative       Grounds dynamic synaptic
-memory is an active modern paradigm.     working memory & Hebbian updates.
+  RetNet / GLA / DeltaNet /                      BDH
+  Gated DeltaNet                                 ↓
+       ↓                           Grounds dynamic synaptic
+Show bounded/recurrent associative working memory & Hebbian updates.
+memory is an active modern paradigm.             ↓
                                                  ↓
                                               BDH-CQ
                                                  ↓
@@ -86,19 +87,31 @@ memory is an active modern paradigm.     working memory & Hebbian updates.
 
 ---
 
-### 5. Gated DeltaNet / Delta Rule Transformers
+### 5. DeltaNet (Parallel Linear Transformers with Delta Rule)
 - **Full Title**: *Parallelizing Linear Transformers with the Delta Rule over Sequence Length*
 - **Authors**: Songlin Yang, Bailin Wang, Yu Zhang, Yikang Shen, Yoon Kim
 - **Year**: 2024
 - **Primary Source Link**: [arXiv:2406.06484](https://arxiv.org/abs/2406.06484)
 - **Exact Role in this Project**:
-  - Grounds the mathematical formulation and motivation of the **Delta update rule** implemented in our simulator.
+  - Delta-rule associative-memory update and hardware-efficient training of DeltaNet. Directly grounds the mathematical formulation and motivation of the **Delta update rule** implemented in our simulator.
 - **Specific Claims Supported**:
   - Replacing naive additive superposition ($M_t = M_{t-1} + v_t k_t^\top$) with an error-correcting delta rule ($M_t = M_{t-1} + \beta (v_t - M_{t-1}k_t)k_t^\top$) directly targets recall error and mitigates cross-talk during sequential associative storage.
+
+---
+
+### 6. Gated DeltaNet (Gated Delta Networks)
+- **Full Title**: *Gated Delta Networks: Improving Mamba2 with Delta Rule*
+- **Authors**: Songlin Yang, Jan Kautz, Ali Hatamizadeh
+- **Year**: 2024 (ICLR 2025)
+- **Primary Source Link**: [arXiv:2412.06464](https://arxiv.org/abs/2412.06464)
+- **Exact Role in this Project**:
+  - Gated delta memory updates, adaptive memory control, and improved associative retrieval.
+- **Specific Claims Supported**:
+  - Unifies data-dependent gating and delta-rule error correction to dynamically regulate retention, selective forgetting, and interference suppression in recurrent associative states.
 
 ---
 
 ## 3. Literature Boundaries & Discipline
 
 - **No Equivalence Claimed**: We do not claim our toy simulator implements BDH or BDH-CQ. Our simulator is an educational abstraction isolating the linear fast-weight associative mechanism.
-- **No Overreaching Generalization**: These five papers demonstrate that bounded associative state and recurrent memory are active, competitive paradigms. They do *not* imply that linear associative memory universally outperforms softmax attention or that interference is completely eliminated.
+- **No Overreaching Generalization**: These six papers demonstrate that bounded associative state and recurrent memory are active, competitive paradigms. They do *not* imply that linear associative memory universally outperforms softmax attention or that interference is completely eliminated.

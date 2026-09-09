@@ -74,7 +74,7 @@ With 96/96 passing unit tests, zero TypeScript compiler errors, clean static pro
 | :--- | :--- | :--- |
 | **Synthetic Vector Geometry** | "Keys and values are Gaussian unit vectors, not real transformer embeddings." | Explicitly conceded in `Limitations.tsx`, `EVIDENCE.md`, and `README.md`. The project is designed as an isolated mathematical sandbox to study interference mechanics without confounding tokenizer or pretraining artifacts. |
 | **Linear Outer-Product State** | "Modern attention uses softmax (or gated linear attention) with multi-head queries, not a single $d \times d$ outer-product." | Acknowledged in `ExactKVComparison.tsx` and `BDHLens.tsx`. The toy isolates the foundational recurrent associative memory formulation ($M_t = M_{t-1} + v_t k_t^\top$) so learners can see the exact algebraic cross-talk term $\sum v_i (k_i^\top k_j)$. |
-| **Prefix-Only Sweep** | "In real streaming, associations may have non-uniform decay or recurrent gating." | Gated Linear Attention (GLA) and Gated DeltaNet are cited as the modern research architectures that address this. The Delta update rule is provided in the simulator to allow learners to observe error-correction on identical data. |
+| **Prefix-Only Sweep** | "In real streaming, associations may have non-uniform decay or recurrent gating." | Gated Linear Attention (GLA), DeltaNet, and Gated DeltaNet are cited as the modern research architectures that address this. The Delta update rule is provided in the simulator to allow learners to observe error-correction on identical data. |
 
 ---
 
@@ -148,7 +148,7 @@ All reported empirical evidence has been verified against the deterministic Type
 
 ## 10. Reproducibility Audit
 
-- **Engine Determinism**: Mulberry32 32-bit PRNG ensures identical floating-point outputs across all platforms and browsers.
+- **Engine Determinism**: Experiments are deterministic for a fixed seed and configuration in the tested JavaScript runtime; reproducibility is verified by automated regression tests.
 - **Automated Tests**: 96 unit tests across 11 test suites pass in $2.9\text{s}$ via `npx vitest run`.
 - **TypeScript**: 0 compilation errors via `npx tsc --noEmit`.
 - **Build**: Clean static page generation via `npm run build` (Turbopack, Next.js 16.3.4).

@@ -126,9 +126,9 @@ The Exact KV Reference stores associations in an explicit list $\{(k_i, v_i)\}_{
 
 ## 7. Primary Literature Roles
 
-The five primary research papers cited in this project fulfill four distinct scientific roles (detailed in [`SOURCES.md`](./SOURCES.md)):
+The primary research papers cited in this project fulfill distinct scientific roles (detailed in [`SOURCES.md`](./SOURCES.md)):
 1. **Our Educational Toy**: Directly demonstrates that linear associative memory trades bounded state growth for cross-talk interference under key overlap.
-2. **RetNet / GLA / Gated DeltaNet**: Demonstrate that constant-size recurrent memory and gated associative recall are active, competitive modern sequence-modeling paradigms ([arXiv:2307.08621](https://arxiv.org/abs/2307.08621), [arXiv:2312.06635](https://arxiv.org/abs/2312.06635), [arXiv:2406.06484](https://arxiv.org/abs/2406.06484)).
+2. **RetNet / GLA / DeltaNet / Gated DeltaNet**: Demonstrate that constant-size recurrent memory, error-correcting delta updates, and gated associative recall are active, competitive modern sequence-modeling paradigms ([arXiv:2307.08621](https://arxiv.org/abs/2307.08621), [arXiv:2312.06635](https://arxiv.org/abs/2312.06635), [arXiv:2406.06484](https://arxiv.org/abs/2406.06484), [arXiv:2412.06464](https://arxiv.org/abs/2412.06464)).
 3. **Dragon Hatchling (BDH)**: Provides the required neuromorphic anchor (*The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain*, Kosowski et al., Sept 30, 2025), showing how inference-time working memory can be implemented via dynamic synaptic plasticity and sparse Hebbian learning in a scale-free particle network ([arXiv:2509.26507](https://arxiv.org/abs/2509.26507)).
 4. **BDH-CQ**: Extends the synaptic memory concept to continuous recurrent inference updates and iterative problem-solving in latent space ([arXiv:2608.09888](https://arxiv.org/abs/2608.09888)).
 
