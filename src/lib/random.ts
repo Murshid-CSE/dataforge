@@ -26,7 +26,7 @@ export function mulberry32(seed: number): () => number {
 export function seededGaussian(rng: () => number): number {
   // Box-Muller requires two uniform samples
   let u1 = rng();
-  let u2 = rng();
+  const u2 = rng();
   // Guard against log(0)
   while (u1 === 0) u1 = rng();
   return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);

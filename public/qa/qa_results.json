@@ -1,0 +1,116 @@
+{
+  "server": {
+    "status": "PASS",
+    "statusCode": 200,
+    "url": "http://localhost:3000"
+  },
+  "viewports": [
+    {
+      "name": "Desktop Large",
+      "width": 1440,
+      "height": 900,
+      "type": "desktop",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop Medium",
+      "width": 1280,
+      "height": 800,
+      "type": "desktop",
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop Small",
+      "width": 1024,
+      "height": 768,
+      "type": "desktop",
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Tablet Portrait",
+      "width": 768,
+      "height": 1024,
+      "type": "tablet",
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Large (iPhone 15 Pro Max)",
+      "width": 430,
+      "height": 932,
+      "type": "mobile",
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Medium (iPhone 14)",
+      "width": 390,
+      "height": 844,
+      "type": "mobile",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Compact (iPhone SE/Mini)",
+      "width": 375,
+      "height": 812,
+      "type": "mobile",
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "hasHorizontalScroll": false,
+      "status": "PASS"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "presets": {
+    "Preset B": "PASS",
+    "Preset C": "PASS",
+    "Preset D": "PASS",
+    "Preset A": "PASS"
+  },
+  "controls": {},
+  "crossTalk": {
+    "hasTarget": true,
+    "hasCrossTalk": true,
+    "hasRetrieved": true,
+    "status": "PASS"
+  },
+  "scenarios": {
+    "aiAgent": "PASS",
+    "customerSupport": "PASS",
+    "sensorStream": "PASS",
+    "disclaimer": "PASS"
+  },
+  "modeSwitching": {
+    "iterations": 5,
+    "status": "PASS"
+  },
+  "learningChallenge": {
+    "status": "PASS"
+  },
+  "accessibility": {
+    "keyboardNavigable": true,
+    "hasAccessibleNames": true,
+    "status": "PASS"
+  },
+  "performance": {
+    "presetSwitchLatencyMs": 174,
+    "status": "PASS (Fast, < 300ms)"
+  }
+}

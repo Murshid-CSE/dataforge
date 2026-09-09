@@ -1,0 +1,114 @@
+{
+  "test1": {
+    "seed": 42,
+    "d": 16,
+    "N": 4,
+    "rho": 0,
+    "rule": "hebbian",
+    "measuredMeanKeyCosine": 0.32686166531632127,
+    "meanCosine": 0.8473475612276894,
+    "meanMSE": 0.02707790290396192
+  },
+  "test2": {
+    "seed": 42,
+    "d": 8,
+    "N": 12,
+    "rule": "hebbian",
+    "lowOverlap": {
+      "configuredRho": 0.1,
+      "measuredKeyOverlap": 0.26902476581983037,
+      "meanCosine": 0.6783277475557745,
+      "meanMSE": 0.15630775750353362
+    },
+    "highOverlap": {
+      "configuredRho": 0.8,
+      "measuredKeyOverlap": 0.8031070429110583,
+      "meanCosine": 0.360714779673965,
+      "meanMSE": 1.0889771555899175
+    }
+  },
+  "test3": {
+    "seed": 42,
+    "d": 8,
+    "rho": 0.2,
+    "rule": "hebbian",
+    "sweep": [
+      {
+        "N": 2,
+        "measuredKeyOverlap": 0.24561125706776774,
+        "meanCosine": 0.9832505442855757,
+        "meanMSE": 0.007540611199801142
+      },
+      {
+        "N": 4,
+        "measuredKeyOverlap": 0.3862172646638415,
+        "meanCosine": 0.8094991028647498,
+        "meanMSE": 0.04823444681060467
+      },
+      {
+        "N": 8,
+        "measuredKeyOverlap": 0.3298136647098752,
+        "meanCosine": 0.7411173601780072,
+        "meanMSE": 0.11705247421087778
+      },
+      {
+        "N": 16,
+        "measuredKeyOverlap": 0.28983703129395383,
+        "meanCosine": 0.6726284089331748,
+        "meanMSE": 0.25754704036691567
+      },
+      {
+        "N": 24,
+        "measuredKeyOverlap": 0.2944198675996896,
+        "meanCosine": 0.5237343575283838,
+        "meanMSE": 0.4293479335636528
+      },
+      {
+        "N": 32,
+        "measuredKeyOverlap": 0.2968666561224644,
+        "meanCosine": 0.463167679883125,
+        "meanMSE": 0.39413547473216193
+      },
+      {
+        "N": 48,
+        "measuredKeyOverlap": 0.32166808336392305,
+        "meanCosine": 0.35806051761816365,
+        "meanMSE": 0.971792106012602
+      },
+      {
+        "N": 64,
+        "measuredKeyOverlap": 0.32574867858268264,
+        "meanCosine": 0.34884477013717424,
+        "meanMSE": 1.5895818537193458
+      }
+    ]
+  },
+  "test4": {
+    "seed": 42,
+    "d": 8,
+    "N": 16,
+    "rho": 0.3,
+    "hebbian": {
+      "meanCosine": 0.6218872386144123,
+      "meanMSE": 0.27280497401606996
+    },
+    "delta": {
+      "beta": 1,
+      "meanCosine": 0.5883782208923811,
+      "meanMSE": 0.09521579857130852
+    }
+  },
+  "test5": {
+    "run1MSE": 0.09861888707202518,
+    "run2MSE": 0.09861888707202518,
+    "isIdenticalBitForBit": true
+  },
+  "crossTalkExactness": {
+    "queryIndex": 2,
+    "targetNorm": 1,
+    "crossTalkNorm": 1.2709664778906422,
+    "retrievedNorm": 1.079643344219302,
+    "maxAbsoluteElementDifference": 1.249000902703301e-16,
+    "isExactToMachinePrecision": true
+  }
+}
