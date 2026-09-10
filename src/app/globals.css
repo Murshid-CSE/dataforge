@@ -61,3 +61,33 @@ body {
   background: var(--border);
   border-radius: 3px;
 }
+
+/* Modern Card & Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(26, 27, 35, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(46, 48, 57, 0.8);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(35, 36, 47, 0.6) 0%, rgba(26, 27, 35, 0.8) 100%);
+  border: 1px solid rgba(46, 48, 57, 0.7);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+}
+
+.glow-accent {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.25);
+}
+
+.glow-success {
+  box-shadow: 0 0 20px -5px rgba(34, 197, 94, 0.25);
+}
+
+.glow-warning {
+  box-shadow: 0 0 20px -5px rgba(245, 158, 11, 0.25);
+}
+
+.glow-danger {
+  box-shadow: 0 0 20px -5px rgba(239, 68, 68, 0.25);
+}

@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     "How Fixed-State Associative Memory Trades Memory Growth for Interference — An interactive exploration of associative memory, fast weights, and cross-talk.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"

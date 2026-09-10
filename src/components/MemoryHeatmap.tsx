@@ -81,15 +81,20 @@ export function MemoryHeatmap({
   const svgHeight = gridHeight + labelOffset;
 
   return (
-    <div className="bg-surface rounded-lg border border-border p-4 flex flex-col gap-4">
+    <div className="glass-card rounded-2xl border border-border/80 p-5 sm:p-6 flex flex-col gap-4 shadow-lg">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/70 pb-3">
         <div>
-          <h3 className="text-base font-semibold text-foreground tracking-tight">
-            Memory State M
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-base font-bold text-foreground tracking-tight flex items-center gap-1.5">
+              <span>📋</span> Memory State M
+            </h3>
+            <span className="text-[10px] font-mono uppercase bg-accent/15 text-accent border border-accent/30 px-2 py-0.5 rounded font-semibold">
+              The Chalkboard
+            </span>
+          </div>
           <p className="text-xs text-muted font-mono mt-0.5">
-            (d &times; d = {d} &times; {d})
+            (d &times; d = {d} &times; {d} matrix · {d * d} constant float cells)
           </p>
         </div>
 
@@ -105,7 +110,7 @@ export function MemoryHeatmap({
             id="heatmap-query-select"
             value={selectedQueryIndex}
             onChange={(e) => onQuerySelect(Number(e.target.value))}
-            className="bg-surface-2 text-foreground border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-accent"
+            className="bg-surface text-foreground border border-border rounded-lg px-2.5 py-1 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer transition shadow-sm"
             aria-label="Select target association query"
           >
             {Array.from({ length: Math.max(1, N) }, (_, i) => (
@@ -115,6 +120,17 @@ export function MemoryHeatmap({
             ))}
           </select>
         </div>
+      </div>
+
+      {/* Chalkboard Metaphor Banner */}
+      <div className="bg-surface-2/40 rounded-xl p-2.5 border border-border/60 text-[11px] text-muted flex items-center justify-between">
+        <span className="flex items-center gap-1.5">
+          <span>💡</span>
+          <span>All <strong>N = {N}</strong> associations are stamped into this exact grid without expanding its size!</span>
+        </span>
+        <span className="font-mono text-[10px] text-success font-semibold px-2 py-0.5 rounded bg-success/10 border border-success/30">
+          O(1) Constant Size
+        </span>
       </div>
 
       {/* Dynamic cell inspector status */}

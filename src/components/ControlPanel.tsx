@@ -41,51 +41,67 @@ export function ControlPanel({
   onSeedChange,
   className = '',
 }: ControlPanelProps) {
+  const capacityRatio = N / d;
+  const isOverloaded = capacityRatio > 1.0;
+
   return (
-    <div className={`bg-surface rounded-lg border border-border p-4 sm:p-6 ${className}`}>
+    <div className={`glass-card rounded-2xl border border-border/80 p-5 sm:p-6 shadow-lg ${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* 1. State dimension d */}
-        <div className="flex flex-col justify-between space-y-2 bg-surface-2/40 p-3 rounded-lg border border-border/50">
+        <div className="flex flex-col justify-between space-y-3 bg-surface-2/60 p-4 rounded-xl border border-border/70 hover:border-accent/40 transition-colors">
           <div>
-            <label htmlFor="dim-select" className="text-sm text-muted block">
-              <span className="text-foreground font-medium">State dimension (d)</span>
-            </label>
-            <p className="text-xs text-muted mt-0.5">
+            <div className="flex items-center justify-between">
+              <label htmlFor="dim-select" className="text-sm text-muted block">
+                <span className="text-foreground font-semibold flex items-center gap-1.5">
+                  <span>📏</span> State dimension (d)
+                </span>
+              </label>
+              <span className="font-mono text-xs px-2 py-0.5 rounded bg-surface border border-border text-accent font-semibold">
+                {d}×{d}
+              </span>
+            </div>
+            <p className="text-xs text-muted mt-1 leading-snug">
               Size of the bounded associative state
             </p>
           </div>
-          <div className="mt-auto pt-1">
+          <div className="mt-auto pt-2 space-y-1.5">
             <select
               id="dim-select"
               value={d}
               onChange={(e) => onDChange(Number(e.target.value))}
               aria-label="State dimension (d)"
-              className="w-full bg-surface-2 border border-border rounded-md px-3 py-1.5 text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
+              className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer transition shadow-sm"
             >
-              <option value={4}>4 (Tiny state)</option>
-              <option value={8}>8 (Standard toy)</option>
-              <option value={16}>16 (Clean capacity)</option>
-              <option value={32}>32 (Wide capacity)</option>
+              <option value={4}>4 (Tiny state · 16 values)</option>
+              <option value={8}>8 (Standard toy · 64 values)</option>
+              <option value={16}>16 (Clean capacity · 256 values)</option>
+              <option value={32}>32 (Wide capacity · 1024 values)</option>
             </select>
+            <div className="text-[11px] font-mono text-muted flex items-center justify-between">
+              <span>Chalkboard size:</span>
+              <span className="text-foreground font-semibold">{d * d} floats</span>
+            </div>
           </div>
         </div>
 
         {/* 2. Associations N */}
-        <div className="flex flex-col justify-between space-y-2 bg-surface-2/40 p-3 rounded-lg border border-border/50">
+        <div className="flex flex-col justify-between space-y-3 bg-surface-2/60 p-4 rounded-xl border border-border/70 hover:border-accent/40 transition-colors">
           <div>
             <div className="flex items-center justify-between">
               <label htmlFor="n-slider" className="text-sm text-muted">
-                <span className="text-foreground font-medium">Associations (N)</span>
+                <span className="text-foreground font-semibold flex items-center gap-1.5">
+                  <span>📝</span> Associations (N)
+                </span>
               </label>
-              <span className="font-mono text-xs px-2 py-0.5 rounded bg-surface-2 border border-border text-foreground font-semibold">
+              <span className="font-mono text-xs px-2 py-0.5 rounded bg-surface border border-border text-foreground font-semibold">
                 N = {N}
               </span>
             </div>
-            <p className="text-xs text-muted mt-0.5">
+            <p className="text-xs text-muted mt-1 leading-snug">
               How much information we force into that state
             </p>
           </div>
-          <div className="mt-auto pt-1">
+          <div className="mt-auto pt-2 space-y-1.5">
             <input
               id="n-slider"
               type="range"
@@ -95,27 +111,42 @@ export function ControlPanel({
               value={N}
               onChange={(e) => onNChange(Number(e.target.value))}
               aria-label="Associations (N)"
-              className="w-full accent-accent cursor-pointer bg-surface-2 h-2 rounded-lg"
+              className="w-full accent-accent cursor-pointer bg-surface h-2 rounded-lg"
             />
+            {/* Real-time memory pressure meter */}
+            <div className="flex items-center justify-between text-[11px] font-mono">
+              <span className="text-muted">Load ratio (N/d):</span>
+              <span
+                className={`font-semibold px-1.5 py-0.2 rounded text-[10px] ${
+                  isOverloaded
+                    ? 'bg-rose-500/15 text-rose-400 border border-rose-500/30'
+                    : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                }`}
+              >
+                {capacityRatio.toFixed(1)}x {isOverloaded ? '⚠️ Pressure' : '🟢 Safe'}
+              </span>
+            </div>
           </div>
         </div>
 
         {/* 3. Key overlap rho */}
-        <div className="flex flex-col justify-between space-y-2 bg-surface-2/40 p-3 rounded-lg border border-border/50">
+        <div className="flex flex-col justify-between space-y-3 bg-surface-2/60 p-4 rounded-xl border border-border/70 hover:border-accent/40 transition-colors">
           <div>
             <div className="flex items-center justify-between">
               <label htmlFor="rho-slider" className="text-sm text-muted">
-                <span className="text-foreground font-medium">Key overlap (ρ)</span>
+                <span className="text-foreground font-semibold flex items-center gap-1.5">
+                  <span>🌫️</span> Key overlap (ρ)
+                </span>
               </label>
-              <span className="font-mono text-xs px-2 py-0.5 rounded bg-surface-2 border border-border text-foreground font-semibold">
+              <span className="font-mono text-xs px-2 py-0.5 rounded bg-surface border border-border text-foreground font-semibold">
                 ρ = {rho.toFixed(2)}
               </span>
             </div>
-            <p className="text-xs text-muted mt-0.5 leading-snug">
+            <p className="text-xs text-muted mt-1 leading-snug">
               ρ controls the expected similarity of generated key vectors. Actual pairwise cosine similarity is measured from the generated keys.
             </p>
           </div>
-          <div className="mt-auto pt-1 space-y-1.5">
+          <div className="mt-auto pt-2 space-y-1.5">
             <input
               id="rho-slider"
               type="range"
@@ -125,7 +156,7 @@ export function ControlPanel({
               value={rho}
               onChange={(e) => onRhoChange(Number(e.target.value))}
               aria-label="Key overlap (ρ)"
-              className="w-full accent-accent cursor-pointer bg-surface-2 h-2 rounded-lg"
+              className="w-full accent-accent cursor-pointer bg-surface h-2 rounded-lg"
             />
             {measuredPairwiseCosine !== undefined && (
               <div className="text-[11px] font-mono text-muted flex items-center justify-between">
@@ -137,46 +168,50 @@ export function ControlPanel({
         </div>
 
         {/* 4. Update rule */}
-        <div className="flex flex-col justify-between space-y-2 bg-surface-2/40 p-3 rounded-lg border border-border/50">
+        <div className="flex flex-col justify-between space-y-3 bg-surface-2/60 p-4 rounded-xl border border-border/70 hover:border-accent/40 transition-colors">
           <div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted block">
-                <span className="text-foreground font-medium">Update rule</span>
+                <span className="text-foreground font-semibold flex items-center gap-1.5">
+                  <span>✏️</span> Update rule
+                </span>
               </span>
               <span className="text-[10px] font-mono text-muted uppercase">
                 Same data; different rule
               </span>
             </div>
-            <p className="text-xs text-muted mt-0.5">
+            <p className="text-xs text-muted mt-1 leading-snug">
               How each new association changes memory
             </p>
           </div>
-          <div className="mt-auto pt-1 flex gap-2" role="group" aria-label="Update rule">
+          <div className="mt-auto pt-2 flex gap-2" role="group" aria-label="Update rule">
             <button
               type="button"
               onClick={() => onRuleChange('hebbian')}
               aria-pressed={rule === 'hebbian'}
               aria-label="Hebbian update rule"
-              className={`flex-1 py-1.5 px-3 rounded-md text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition flex flex-col items-center gap-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 rule === 'hebbian'
-                  ? 'bg-accent text-white shadow-sm'
-                  : 'bg-surface-2 text-muted hover:text-foreground hover:bg-border border border-border'
+                  ? 'bg-accent text-white shadow-md'
+                  : 'bg-surface text-muted hover:text-foreground hover:bg-surface-2 border border-border'
               }`}
             >
-              Hebbian
+              <span>Hebbian</span>
+              <span className="text-[9px] font-normal opacity-80">Additive</span>
             </button>
             <button
               type="button"
               onClick={() => onRuleChange('delta')}
               aria-pressed={rule === 'delta'}
               aria-label="Delta update rule"
-              className={`flex-1 py-1.5 px-3 rounded-md text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition flex flex-col items-center gap-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 rule === 'delta'
-                  ? 'bg-accent text-white shadow-sm'
-                  : 'bg-surface-2 text-muted hover:text-foreground hover:bg-border border border-border'
+                  ? 'bg-accent text-white shadow-md'
+                  : 'bg-surface text-muted hover:text-foreground hover:bg-surface-2 border border-border'
               }`}
             >
-              Delta
+              <span>Delta</span>
+              <span className="text-[9px] font-normal opacity-80">Corrective</span>
             </button>
           </div>
         </div>
