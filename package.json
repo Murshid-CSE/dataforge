@@ -10,6 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "geist": "^1.9.2",
     "katex": "^0.18.7",
     "next": "16.3.4",
     "react": "19.2.8",
@@ -19,7 +20,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-katex": "^3.0.4",

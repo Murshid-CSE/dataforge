@@ -132,6 +132,17 @@ export default function Home() {
               </span>
             </div>
 
+            <a
+              download={`memory-sweep-${rule}-seed-${seed}.csv`}
+              href={`data:text/csv;charset=utf-8,${encodeURIComponent([
+                'seed,dimension,rho,rule,N,mean_cosine,mean_mse,mean_absolute_pairwise_cosine',
+                ...sweepData.map(point => [seed, d, rho, rule, point.N, point.meanCosine,
+                  point.meanMSE, point.measuredPairwiseCosine].join(',')),
+              ].join('\r\n'))}`}
+              className="rounded-lg border border-border px-2.5 py-1 hover:border-accent"
+            >
+              Download sweep CSV
+            </a>
             <button
               type="button"
               onClick={() => setUnifiedView(!unifiedView)}

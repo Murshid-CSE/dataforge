@@ -311,3 +311,9 @@ Visit `http://localhost:3000` to interact with the live artifact.
 ├── tsconfig.json                  # Strict TypeScript configuration
 └── vitest.config.ts               # Vitest test configuration
 ```
+
+## Reproduce an experiment
+
+Use **Download sweep CSV** to save all 64 prefix lengths with their seed, dimension, overlap setting, update rule, retrieval scores and measured overlap. Each row describes a prefix of the same generated stream. The sweep applies one matrix update per added association, or 64 writes for a full sweep compared with 2,080 when rebuilding each prefix.
+
+The GitHub Pages release runs the test suite, builds with `PAGES_BUILD=true` and publishes the static export. Computation runs in the visitor's browser. To roll back, revert the release commit and let the same workflow rebuild it.

@@ -14,7 +14,8 @@
 
 import { mulberry32 } from './random';
 import { generateKeys, generateValues, meanPairwiseCosine } from './generators';
-import { buildMemory, retrieve, type UpdateRule } from './associativeMemory';
+import { zeroMatrix } from './vector';
+import { buildMemory, deltaWrite, hebbianWrite, retrieve, type UpdateRule } from './associativeMemory';
 import { aggregateQuality, type AggregateQuality } from './metrics';
 import { decomposeCrossTalk, type CrossTalkDecomposition } from './crossTalk';
 import { createExactKVStore, exactRetrieveByIndex } from './exactKVReference';
@@ -146,11 +147,14 @@ export function runErrorVsNSweep(
   const maxKeys = generateKeys(maxN, d, rho, rng);
   const maxValues = generateValues(maxN, d, rng);
 
+  let memory = zeroMatrix(d, d);
   for (let n = 1; n <= maxN; n++) {
     const keys = maxKeys.slice(0, n);
     const values = maxValues.slice(0, n);
-    const M = buildMemory(keys, values, rule, beta);
-    const agg = aggregateQuality(keys, values, M, retrieve);
+    memory = rule === 'hebbian'
+      ? hebbianWrite(memory, values[n - 1], keys[n - 1])
+      : deltaWrite(memory, values[n - 1], keys[n - 1], beta);
+    const agg = aggregateQuality(keys, values, memory, retrieve);
     const measuredCos = meanPairwiseCosine(keys);
 
     points.push({
