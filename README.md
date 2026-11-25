@@ -1,4 +1,9 @@
 # Memory Design Lab
+
+**[Open Memory Design Lab](https://murshid-cse.github.io/dataforge/)** · [Release checks](https://github.com/Murshid-CSE/dataforge/actions/workflows/pages.yml)
+
+Select a memory preset, compare the two update rules, then download the sweep CSV to reproduce the retrieval scores.
+
 ### Stress-Test Bounded AI Memory Before You Ship It
 **Scientific Subtitle**: *Memory Under Pressure: How Fixed-State Associative Memory Trades Memory Growth for Interference*
 
